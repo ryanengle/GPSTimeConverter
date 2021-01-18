@@ -41,15 +41,16 @@ public class MainActivity extends AppCompatActivity {
 
         butCalculate.setOnClickListener(v -> {
 
+            // These are set at the instant when the button is clicked
+            int epochYear = getGpsEpochYearFromGui();
             double gpsWeek = getGpsWeekFromGui();
             double gpsSeconds = getGpsSecondsFromGui();
-            int epochYear = getGpsEpochYearFromGui();
 
+            Log.d("CheckInput", String.valueOf(epochYear));
             Log.d("CheckInput", String.valueOf(gpsWeek));
             Log.d("CheckInput", String.valueOf(gpsSeconds));
-            Log.d("CheckInput", String.valueOf(epochYear));
 
-            this.doConvertCalc();
+            this.doConvertCalc(epochYear, gpsWeek, gpsSeconds);
         });
     }
 
@@ -89,9 +90,22 @@ public class MainActivity extends AppCompatActivity {
         return gpsWeek;
     }
 
-    protected void doConvertCalc(){
-        test_verifyEpochs();
+    protected void doConvertCalc(int epochYear, double gpsWeek, double gpsSeconds){
+        //test_verifyEpochs();
+        Calendar result = myConverter.calculate_utc_from_gps(epochYear, gpsWeek, gpsSeconds);
 
+        String msg;
+
+        try {
+            final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssZ");
+            final Date myDate = result.getTime();
+            // TODO Show UTC rather than Local
+            msg = format.format(myDate);
+
+        } catch (Exception e) {
+            msg = "Error calculating date & time";
+        }
+        txtViewResult.setText(msg);
     }
 
 

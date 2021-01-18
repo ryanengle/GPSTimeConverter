@@ -54,9 +54,14 @@ public class GpsConverter {
     }
 
     // Assumes intended, valid epoch is set
+    // TODO Check for valid gps epoch
+    // TODO Retain fractional seconds
+    // TODO Add leap seconds
     protected Calendar calculate_utc_from_gps (double gpsWeek, double gpsSecondsOfWeek){
-        final Calendar o = null;
-        return o;
+        Calendar result = (Calendar) getGpsEpoch(getEpochYear()).clone();
+        int secondsToAdd = (int) ((secondsInWeek * gpsWeek) + gpsSecondsOfWeek);
+        result.add(Calendar.SECOND, secondsToAdd);
+        return result;
     }
 
     protected Calendar calculate_utc_from_gps(int epoch, double gpsWeek, double gpsSecondsOfWeek) {
