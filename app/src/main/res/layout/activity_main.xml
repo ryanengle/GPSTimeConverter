@@ -19,23 +19,24 @@
 
             <!-- First Row: Radio Group for GPS Epoch Selection -->
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/rgEpochYears"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <RadioButton android:id="@+id/radio_1980"
+                <RadioButton android:id="@+id/rb_1980"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/epoch1980"
                     android:checked="true"/>
-                <RadioButton android:id="@+id/radio_1999"
+                <RadioButton android:id="@+id/rb_1999"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/epoch1999" />
-                <RadioButton android:id="@+id/radio_2019"
+                <RadioButton android:id="@+id/rb_2019"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/epoch2019"/>
-                <RadioButton android:id="@+id/radio_2038"
+                <RadioButton android:id="@+id/rb_2038"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/epoch2038"/>
