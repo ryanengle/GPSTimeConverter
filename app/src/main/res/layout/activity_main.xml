@@ -16,7 +16,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!-- First row: GPS Week-->
+
+            <!-- First Row: Radio Group for GPS Epoch Selection -->
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton android:id="@+id/radio_1980"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/epoch1980"/>
+                <RadioButton android:id="@+id/radio_1999"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/epoch1999" />
+                <RadioButton android:id="@+id/radio_2019"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/epoch2019"/>
+                <RadioButton android:id="@+id/radio_2038"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/epoch2038"/>
+            </RadioGroup>
+
+            <!--Second row: GPS Week-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,7 +59,7 @@
                     android:inputType="numberDecimal"/>
             </LinearLayout>
 
-            <!-- Second Row: GPS Seconds-->
+            <!-- Third Row: GPS Seconds-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,13 +77,15 @@
                     android:gravity="center"
                     android:inputType="numberDecimal"/>
             </LinearLayout>
+
+            <!-- Fourth row -->
             <Button
                 android:id="@+id/butCalculate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Calculate"/>
 
-            <!-- Result -->
+            <!-- Fifth Row: Result -->
             <TextView
                 android:id="@+id/txtViewResult"
                 android:layout_width="match_parent"

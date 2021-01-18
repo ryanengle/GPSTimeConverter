@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">GPS Time Converter</string>
+    <string name="Calculate">Calculate</string>
+    <string name="epoch1980">1980</string>
+    <string name="epoch1999">1999</string>
+    <string name="epoch2019">2019</string>
+    <string name="epoch2038">2038</string>
     <string name="GpsWeek">GPS Week</string>
     <string name="GpsSeconds">GPS Seconds</string>
-    <string name="Calculate">Calculate</string>
+
 </resources>
