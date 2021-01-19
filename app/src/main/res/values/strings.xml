@@ -7,5 +7,7 @@
     <string name="epoch2038">2038</string>
     <string name="GpsWeek">GPS Week</string>
     <string name="GpsSeconds">GPS Seconds</string>
+    <string name="GpsRollover">GPS Rollover Year</string>
+    <string name="zero">0</string>
 
 </resources>
