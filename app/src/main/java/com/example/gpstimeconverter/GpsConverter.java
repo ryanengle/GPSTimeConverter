@@ -9,21 +9,20 @@ import android.util.Log;
 
 public class GpsConverter {
 
-    private final int secondsInDay;
     private final int secondsInWeek;
     //https://developer.android.com/reference/java/util/Calendar#public-methods
     // Using Calendar for Android API level 23
     // TODO in future to java.time (LocalDateTime)
     // https://developer.android.com/reference/java/time/package-summary
-    // TODO make this an array or LL
+    // TODO make this an array, map, or LL
     private Calendar gpsEpoch1980;
     private Calendar gpsEpoch1999;
     private Calendar gpsEpoch2019;
+    private Calendar gpsEpoch2038;
     private int epochYear;
 
 
     public GpsConverter(){
-        secondsInDay = 86400;
         secondsInWeek = 604800;
 
         // Set default epoch year to 1980
@@ -49,6 +48,10 @@ public class GpsConverter {
         gpsEpoch2019 = Calendar.getInstance();
         gpsEpoch2019.setTimeZone(utcTz);
         gpsEpoch2019.set(2019, 3, 7, 0,0,0);
+        // 2038: November 21 (Sunday)
+        gpsEpoch2038 = Calendar.getInstance();
+        gpsEpoch2038.setTimeZone(utcTz);
+        gpsEpoch2038.set(2038, 10, 21, 0,0,0);
 
         Log.d("CONSTRUCTOR", "Created GPS Converter");
     }
@@ -71,9 +74,6 @@ public class GpsConverter {
         return calendar;
     }
 
-    protected int getSecondsInDay() {
-        return secondsInDay;
-    }
     protected int getSecondsInWeek() {
         return secondsInWeek;
     }
@@ -91,6 +91,8 @@ public class GpsConverter {
                 return gpsEpoch1999;
             case 2019:
                 return gpsEpoch2019;
+            case 2038:
+                return gpsEpoch2038;
             default:
                 final Calendar o = null;
                 return o;
@@ -104,6 +106,7 @@ public class GpsConverter {
     protected Calendar getGpsEpoch1980() { return gpsEpoch1980; }
     protected Calendar getGpsEpoch1999() { return gpsEpoch1999; }
     protected Calendar getGpsEpoch2019() { return gpsEpoch2019; }
+    protected Calendar getGpsEpoch2038() { return gpsEpoch2038; }
 
     // TODO Verify valid epoch set
     public void setEpochYear(int epochYear) {
