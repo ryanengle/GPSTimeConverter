@@ -8,6 +8,7 @@
     <string name="GpsWeek">GPS Week</string>
     <string name="GpsSeconds">GPS Seconds</string>
     <string name="GpsRollover">GPS Rollover Year</string>
+    <string name="LeapSecondsWarning">WARNING: Calculation does not include leap seconds</string>
     <string name="zero">0</string>
 
 </resources>

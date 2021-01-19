@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- First Row: Radio Group for GPS Epoch Selection -->
+            <!-- GPS Rollover Year (Epoch) Selection -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,19 +49,17 @@
                     android:text="@string/epoch2038"/>
             </RadioGroup>
 
-            <!--Second row: GPS Week-->
+            <!-- GPS Week-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="95dp"
                     android:labelFor="@id/edTxtGpsWeek"
                     android:text="@string/GpsWeek" />
-
                 <EditText
                     android:id="@+id/edTxtGpsWeek"
                     android:layout_width="0dp"
@@ -72,7 +70,7 @@
                     android:inputType="numberDecimal"/>
             </LinearLayout>
 
-            <!-- Third Row: GPS Seconds-->
+            <!-- GPS Seconds-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -93,14 +91,14 @@
                     android:inputType="numberDecimal"/>
             </LinearLayout>
 
-            <!-- Fourth row -->
+            <!-- Calculate button -->
             <Button
                 android:id="@+id/butCalculate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Calculate"/>
 
-            <!-- Fifth Row: Result -->
+            <!-- Result -->
             <TextView
                 android:id="@+id/txtViewResult"
                 android:layout_width="match_parent"
@@ -109,6 +107,15 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:text="@string/zero"/>
+
+            <!-- Leap Second Warning -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:textColor="@color/red"
+                android:text="@string/LeapSecondsWarning"/>
 
         </LinearLayout>
 
