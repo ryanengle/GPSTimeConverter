@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import static java.text.DateFormat.getDateInstance;
 
@@ -50,8 +52,29 @@ public class MainActivity extends AppCompatActivity {
             Log.d("CheckInput", String.valueOf(gpsWeek));
             Log.d("CheckInput", String.valueOf(gpsSeconds));
 
-            this.doConvertCalc(epochYear, gpsWeek, gpsSeconds);
+            doConvertCalc(epochYear, gpsWeek, gpsSeconds);
         });
+    }
+
+    protected void doConvertCalc(int epochYear, double gpsWeek, double gpsSeconds){
+        //test_verifyEpochs();
+        Calendar result = myConverter.calculate_utc_from_gps(epochYear, gpsWeek, gpsSeconds);
+
+        String msg;
+
+        try {
+            // TODO Add Timezone selection
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssX");
+            format.setTimeZone(TimeZone.getTimeZone("UTC"));
+            final Date myDate = result.getTime();
+
+            msg = format.format(myDate);
+
+        } catch (Exception e) {
+            msg = "Error calculating date & time";
+        }
+        Log.d("timeTest", msg);
+        txtViewResult.setText(msg);
     }
 
     protected int getGpsEpochYearFromGui(){
@@ -89,25 +112,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return gpsWeek;
     }
-
-    protected void doConvertCalc(int epochYear, double gpsWeek, double gpsSeconds){
-        //test_verifyEpochs();
-        Calendar result = myConverter.calculate_utc_from_gps(epochYear, gpsWeek, gpsSeconds);
-
-        String msg;
-
-        try {
-            final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssZ");
-            final Date myDate = result.getTime();
-            // TODO Show UTC rather than Local
-            msg = format.format(myDate);
-
-        } catch (Exception e) {
-            msg = "Error calculating date & time";
-        }
-        txtViewResult.setText(msg);
-    }
-
 
     private void test_verifyEpochs(){
         final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssZ");
